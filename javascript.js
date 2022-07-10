@@ -1,9 +1,4 @@
 const grid = document.querySelector('.grid');
-const boxes = document.querySelectorAll('.box');
-
-function addColor(box) {
-    box.classList.add('customBg');
-}
 
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
@@ -17,12 +12,24 @@ function createGrid(size) {
             for (let e = 0; e < size;e++) {
                 const ele = document.createElement('div');
                 ele.classList.add('box');
+                ele.style.width = (540 / size) + "px";
+                ele.style.height = (540 / size) + "px";
+                ele.addEventListener('mouseover', changeColor);
+                ele.addEventListener('mousedown', changeColor);
                 row.appendChild(ele);
-                ele.addEventListener('dragenter', (e) => {
-                    ele.style.backgroundColor = "blue"
-                })
-            }
-        grid.appendChild(row);
+                } grid.appendChild(row);
+            } 
+        
+}
+
+let currentMode = "color";
+let currentColor = "black";
+
+function changeColor(e) {
+    if (e.type === 'mouseover' && !mouseDown) return
+    e.preventDefault();
+    if (currentMode === 'color') {
+      e.target.style.backgroundColor = currentColor;
     }
 }
 
