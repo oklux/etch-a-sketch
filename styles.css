@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    border: 1px solid black;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.customBg {
+    background-color: blue;
+}
