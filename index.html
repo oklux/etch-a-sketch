@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Finlandica&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="fullcontainer">
@@ -19,15 +20,23 @@
             <div class="sidebar">
                 <div class="buttons">
                     <button id="rainbow"></button>
+                    <div style="position:relative; display:inline-block">
+                        <button type="button" id="colorbtn"><i class="material-icons">Pick A Color</i></button>
+                        <input type="color" id="colorpicker" value="#000000" style="opacity:0; position:absolute; left:0;top:0;width:100%"/>
+                    </div>
+                    <button id="reset" draggable="false"><img src="https://i.pinimg.com/originals/86/16/9a/86169a7c0ea169c3aa1f5e8bf9555220.png"></button>
+                    <button id="eraser"><img src="https://cdn.icon-icons.com/icons2/2248/PNG/512/eraser_icon_138637.png"></button>
                 </div>
                 <div class="slider">
-                    <input type="range" id="slider" min="1" max="64" value="16"></input>
+                    <input type="range" id="slider" min="8" max="64" value="16" step="8"></input>
                     <label for="grid-size" id="grid-label">16 x 16</label>
                 </div>
             </div>
             <div class="grid"></div>
         </div>
     </div>
+    
 </div>
+<div class="footer"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"><a href="https://github.com/oklux"> oklux</a></div>
 </body>
 </html>

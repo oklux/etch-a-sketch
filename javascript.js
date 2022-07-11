@@ -1,7 +1,11 @@
 const grid = document.querySelector('.grid');
 const slider = document.getElementById("slider");
 const gridLabel = document.getElementById('grid-label');
-const rainbow = document.querySelector('#rainbow');
+const rainbow = document.getElementById('rainbow');
+const reset = document.getElementById('reset');
+const eraser = document.getElementById('eraser')
+const colorpicker = document.getElementById('colorpicker');
+const colorBtn = document.getElementById('colorbtn');
 
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
@@ -16,8 +20,8 @@ function createGrid(size) {
             for (let e = 0; e < size;e++) {
                 const ele = document.createElement('div');
                 ele.classList.add('box');
-                ele.style.width = (540 / size) + "px";
-                ele.style.height = (540 / size) + "px";
+                ele.style.width = (600 / size ) + "px";
+                ele.style.height = (600 / size ) + "px";
                 ele.addEventListener('mouseover', changeColor);
                 ele.addEventListener('mousedown', changeColor);
                 row.appendChild(ele);
@@ -34,6 +38,7 @@ function removeCells() {
 
 let currentMode = "color";
 let currentColor = "black";
+let eraserMode = false;
 
 function changeColor(e) {
     if (e.type === 'mouseover' && !mouseDown) return
@@ -57,13 +62,73 @@ rainbow.addEventListener('click', function() {
         currentMode = 'color';
         return;
     }
+    eraser.classList.remove('clickbutton');
     rainbow.classList.add('clickbutton');
     currentMode = 'rainbow';
 });
 
+eraser.addEventListener('click', function() {
+  if (currentMode === 'rainbow') {
+      rainbow.classList.remove('clickbutton');
+      eraser.classList.add('clickbutton');
+      eraserMode = true;
+      currentMode = 'color';
+      currentColor = 'white';
+      return;
+  } if (eraserMode === true) {
+    eraser.classList.remove('clickbutton');
+    currentColor = colorpicker.value;
+    eraserMode = false;
+    return;
+  }
+  eraser.classList.add('clickbutton');
+  eraserMode = true;
+  currentMode = 'color';
+  currentColor = 'white';
+  return;
+});
+
+colorpicker.addEventListener('change', (e) => {
+  if (currentMode === 'rainbow') {
+    rainbow.classList.remove('clickbutton');
+    colorpicker.classList.add('clickbutton');
+    currentMode = 'color';
+    currentColor = e.target.value;
+    colorBtn.style.backgroundColor = e.target.value;
+    return;
+} if (eraserMode === true) {
+    colorpicker.classList.add('clickbutton');
+    eraser.classList.remove('clickbutton');
+    currentColor = e.target.value;
+    colorBtn.style.backgroundColor = e.target.value;
+    currentMode = 'color';
+    eraserMode = false;
+    return;
+  } else {
+    colorpicker.classList.add('clickbutton');
+    colorBtn.style.backgroundColor = e.target.value;
+    currentColor = e.target.value;
+    currentMode = 'color';
+  }
+})
+
+
+let currentSize = 16;
+
+reset.addEventListener('mousedown', () => {
+  reset.classList.add('clickbutton');
+});
+
+reset.addEventListener('mouseup', () => {
+  reset.classList.remove('clickbutton');
+  createGrid(currentSize);
+})
+
+
 slider.addEventListener("change", function() { 
     createGrid(slider.value);
     gridLabel.textContent = slider.value + " x " + slider.value;
+    currentSize = slider.value;
 });
 
 createGrid(slider.value);
