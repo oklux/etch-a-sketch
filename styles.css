@@ -1,20 +1,28 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: linear-gradient(-45deg, #ff0000, #7700ff);
+    background-size: 400% 400%;
+}
+
+.fullcontainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .box {
-    border: 1px solid black;
-    width: 40px;
-    height: 40px;
+    outline: 1px solid grey;
+    outline-offset: -1px;
 }
 
 .grid {
     display: flex;
     flex-direction: column;
     width: max-content;
-    border: 1px solid black;
+    border: 5px solid black;
+    background-color: white;
+    margin-left: 20px;
 }
 
 .row {
@@ -22,6 +30,84 @@ body {
     flex-direction: row;
 }
 
-.customBg {
-    background-color: blue;
+.container {
+    margin: 0 auto;
+    background-color: rgb(252, 59, 69);
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    border-radius: 40px;
+    border: 8px solid rgb(138, 53, 53);
+    box-shadow: rgb(100, 48, 27) 5px 5px,rgb(100, 48, 27) 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.header {
+    text-align: center;
+    margin: 5px;
+    color: rgb(238, 238, 53);
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-family: 'Finlandica', sans-serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 70px;
+}
+
+#rainbow {
+    background: linear-gradient(
+        -45deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+    );
+}
+
+button {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid rgb(77, 74, 74);
+    cursor: pointer;
+    box-shadow: rgb(46, 46, 46) 3px 3px,rgb(46, 46, 46) 6px 6px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.slider {
+    margin-bottom: 10px;
+}
+
+#grid-label {
+    font-family: 'Finlandica', sans-serif;
+    font-weight: 700;
+    font-size: 20px;  
+    color: rgb(46, 46, 46);
+}
+
+.clickbutton {
+    box-shadow: rgb(46, 46, 46) 3px 3px;
+    top: 3px;
+    left: 3px;
+    transition: 0.1s;
 }
