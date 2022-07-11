@@ -63,6 +63,7 @@ rainbow.addEventListener('click', function() {
         return;
     }
     eraser.classList.remove('clickbutton');
+    colorBtn.classList.remove('clickbutton');
     rainbow.classList.add('clickbutton');
     currentMode = 'rainbow';
 });
@@ -70,18 +71,21 @@ rainbow.addEventListener('click', function() {
 eraser.addEventListener('click', function() {
   if (currentMode === 'rainbow') {
       rainbow.classList.remove('clickbutton');
+      colorBtn.classList.remove('clickbutton');
       eraser.classList.add('clickbutton');
       eraserMode = true;
       currentMode = 'color';
       currentColor = 'white';
       return;
   } if (eraserMode === true) {
+    colorBtn.classList.remove('clickbutton');
     eraser.classList.remove('clickbutton');
     currentColor = colorpicker.value;
     eraserMode = false;
     return;
   }
   eraser.classList.add('clickbutton');
+  colorBtn.classList.remove('clickbutton');
   eraserMode = true;
   currentMode = 'color';
   currentColor = 'white';
@@ -91,13 +95,13 @@ eraser.addEventListener('click', function() {
 colorpicker.addEventListener('change', (e) => {
   if (currentMode === 'rainbow') {
     rainbow.classList.remove('clickbutton');
-    colorpicker.classList.add('clickbutton');
+    colorBtn.classList.add('clickbutton');
     currentMode = 'color';
     currentColor = e.target.value;
     colorBtn.style.backgroundColor = e.target.value;
     return;
 } if (eraserMode === true) {
-    colorpicker.classList.add('clickbutton');
+  colorBtn.classList.add('clickbutton');
     eraser.classList.remove('clickbutton');
     currentColor = e.target.value;
     colorBtn.style.backgroundColor = e.target.value;
@@ -105,7 +109,7 @@ colorpicker.addEventListener('change', (e) => {
     eraserMode = false;
     return;
   } else {
-    colorpicker.classList.add('clickbutton');
+    colorBtn.classList.add('clickbutton');
     colorBtn.style.backgroundColor = e.target.value;
     currentColor = e.target.value;
     currentMode = 'color';

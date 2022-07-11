@@ -19,13 +19,15 @@
         <div class="content">
             <div class="sidebar">
                 <div class="buttons">
-                    <button id="rainbow"></button>
-                    <div style="position:relative; display:inline-block">
+                    <div class="btn"><button id="rainbow"></button></div>
+                    <div class="btn">
+                        <div style="position:relative; display:inline-block">
                         <button type="button" id="colorbtn"><i class="material-icons">Pick A Color</i></button>
                         <input type="color" id="colorpicker" value="#000000" style="opacity:0; position:absolute; left:0;top:0;width:100%"/>
+                        </div>
                     </div>
-                    <button id="reset" draggable="false"><img src="https://i.pinimg.com/originals/86/16/9a/86169a7c0ea169c3aa1f5e8bf9555220.png"></button>
-                    <button id="eraser"><img src="https://cdn.icon-icons.com/icons2/2248/PNG/512/eraser_icon_138637.png"></button>
+                    <div class="btn"><button id="reset" draggable="false"><img src="https://i.pinimg.com/originals/86/16/9a/86169a7c0ea169c3aa1f5e8bf9555220.png"></button></div>
+                    <div class="btn"><button id="eraser"><img src="https://cdn.icon-icons.com/icons2/2248/PNG/512/eraser_icon_138637.png"></button></div>
                 </div>
                 <div class="slider">
                     <input type="range" id="slider" min="8" max="64" value="16" step="8"></input>
